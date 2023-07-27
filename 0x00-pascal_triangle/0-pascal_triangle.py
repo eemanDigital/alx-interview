@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+'''A module for working with Pascal's triangle.
+'''
 def pascal_triangle(n):
     triangle = []
     if type(n) is not int or n <= 0:
