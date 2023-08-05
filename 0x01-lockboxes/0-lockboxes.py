@@ -17,16 +17,13 @@ def canUnlockAll(boxes):
         bool: True if all boxes can be opened, False otherwise.
     """
     n = len(boxes)
-    visited = [False] * n
-    stack = [0]
-
-    while stack:
-        current_box = stack.pop()
-        visited[current_box] = True
-        keys = boxes[current_box]
-
-        for key in keys:
-            if not visited[key]:
-                stack.append(key)
-
-    return all(visited)
+    seen_boxes = set([0])
+    unseen_boxes = set(boxes[0]).difference(set([0]))
+    while len(unseen_boxes) > 0:
+        boxIdx = unseen_boxes.pop()
+        if not boxIdx or boxIdx >= n or boxIdx < 0:
+            continue
+        if boxIdx not in seen_boxes:
+            unseen_boxes = unseen_boxes.union(boxes[boxIdx])
+            seen_boxes.add(boxIdx)
+    return n == len(seen_boxes)
