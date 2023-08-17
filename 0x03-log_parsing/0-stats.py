@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 '''A script for parsing HTTP request logs.
 '''
 import re
